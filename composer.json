@@ -1,5 +1,5 @@
 {
-    "name": "oauth2china",
+    "name": "tlikai/oauth2china",
     "description": "Authorize users in you application with oauth 2.0 providers",
     "license": "New BSD",
     "type": "yii-extension",
