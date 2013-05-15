@@ -1,0 +1,13 @@
+{
+    "name": "oauth2china",
+    "description": "Authorize users in you application with oauth 2.0 providers",
+    "license": "New BSD",
+    "type": "yii-extension",
+    "authors": {
+        "name": "Likai",
+        "email": "youyuge@gmail.com"
+    },
+    "require": {
+        "php": ">=5.0"
+    }
+}
