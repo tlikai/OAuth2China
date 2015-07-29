@@ -63,6 +63,7 @@ abstract class OAuth2China_Provider_Abstract
     protected $options = array(
         'authorizeUrl' => '',
         'accessTokenUrl' => '',
+		'openIdUrl' => '',
     );
 
     /**
@@ -139,6 +140,27 @@ abstract class OAuth2China_Provider_Abstract
         $this->token = $this->resolveAccessToken($token);
 
         return $this->token;
+    }
+
+    /**
+     * Get QQ OpenId
+     *
+     * @param string $accessToken
+     *
+     * @return array
+     */
+    public function getOpenId($accessToken)
+    {
+        $params = array(
+            'access_token' => $accessToken,
+        );
+        if($this->accessTokenParamsSendBy == self::POST)
+            $token = $this->sendRequest($this->options['openIdUrl'], $params, self::POST);
+        else
+            $token = $this->sendRequest($this->options['openIdUrl'] . '?' . http_build_query($params), array(), self::POST);
+
+        //return $token['openid'];
+        return $token->openid;	
     }
 
     /**
