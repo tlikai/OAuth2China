@@ -14,6 +14,7 @@ class OAuth2China_Provider_Qq extends OAuth2China_Provider_Abstract
     protected $options = array(
         'authorizeUrl' => 'https://graph.qq.com/oauth2.0/authorize',
         'accessTokenUrl' => 'https://graph.qq.com/oauth2.0/token',
+		'openIdUrl' => 'https://graph.qq.com/oauth2.0/me',
     );
 
     public function resolveAccessToken($token)
@@ -25,7 +26,7 @@ class OAuth2China_Provider_Qq extends OAuth2China_Provider_Abstract
                 throw new CException($token->error_description);
 
         $token = array(
-            'provider_uid' => '',
+            'provider_uid' => $this->getOpenId($token['access_token']),
             'access_token' => $token['access_token'],
             'refresh_token' => '',
             'expires_in' => $token['expires_in'],
